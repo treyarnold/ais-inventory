@@ -4,13 +4,13 @@
 
 ## Developers
 
-- [Trey Arnold](Github Link)
+- [Trey Arnold](https://github.com/treyarnold)
   - Utility
 
-- [Chris Strope](Github Link)
+- [Chris Strope](https://github.com/Stroupe79)
   - Backend
 
-- [Ibrahim Iqbal](Github Link)
+- [Ibrahim Iqbal](https://github.com/iaiqbal)
   - Front End
 
 ## Techstack
