@@ -1,3 +1,6 @@
+var Sequelize = require("sequelize");
+
+
 module.exports = function(sequelize, DataTypes) {
   var Inventory = sequelize.define("Inventory", {
     name: DataTypes.STRING,
@@ -9,7 +12,17 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     },
-    UPC: DataTypes.INTEGER    
+    UPC: DataTypes.INTEGER,
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+    }
   });
   return Inventory;
 };

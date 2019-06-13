@@ -1,3 +1,5 @@
+var Sequelize = require("sequelize");
+
 module.exports = function(sequelize, DataTypes) {
     var Sale = sequelize.define("Sale", {
       drink_name: DataTypes.STRING,
@@ -16,7 +18,17 @@ module.exports = function(sequelize, DataTypes) {
       amount_3: DataTypes.DOUBLE,
       amount_4: DataTypes.DOUBLE,
       num_sold: DataTypes.INTEGER,
-      datetime: DataTypes.DATE
+      datetime: DataTypes.DATE,
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+      }
     });
     return Sale;
   };
