@@ -1,7 +1,7 @@
 var Sequelize = require("sequelize");
 
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Inventory = sequelize.define("Inventory", {
     name: DataTypes.STRING,
     type: DataTypes.STRING,
@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     },
-    UPC: DataTypes.INTEGER,
+    UPC: DataTypes.STRING,
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
