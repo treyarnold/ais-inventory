@@ -5,8 +5,10 @@ module.exports = function (sequelize, DataTypes) {
   var Inventory = sequelize.define("Inventory", {
     name: DataTypes.STRING,
     type: DataTypes.STRING,
-    quantity: DataTypes.DOUBLE,
-    price: DataTypes.DOUBLE,
+    quantity_bottles: DataTypes.DOUBLE,
+    price_bottle: DataTypes.DOUBLE,
+    inventory_value: DataTypes.DOUBLE,
+    usage: DataTypes.DOUBLE,
     reorder: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
