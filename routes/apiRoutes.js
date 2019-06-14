@@ -16,8 +16,9 @@ module.exports = function (app) {
   });
 
   // Delete an inventory item by id
-  app.delete("/api/inventory/:id", function (req, res) {
-    db.Inventory.destroy({
+  app.get("/api/inventory/:id", function (req, res) {
+    console.log(req.params.id)
+    db.Inventory.findAll({
       where: {
         id: req.params.id
       }

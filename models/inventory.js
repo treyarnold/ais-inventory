@@ -8,7 +8,6 @@ module.exports = function (sequelize, DataTypes) {
     quantity_bottles: DataTypes.DOUBLE,
     price_bottle: DataTypes.DOUBLE,
     inventory_value: DataTypes.DOUBLE,
-    usage: DataTypes.DOUBLE,
     reorder: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
