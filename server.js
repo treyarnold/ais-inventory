@@ -1,13 +1,13 @@
 require("dotenv").config();
-var express = require("express");
-var exphbs = require("express-handlebars");
-var session = require("express-session");
-var passport = require("./config/passport");
+const express = require("express");
+const exphbs = require("express-handlebars");
+const session = require("express-session");
+const passport = require("./config/passport");
 
-var db = require("./models");
+const db = require("./models");
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({
@@ -18,7 +18,7 @@ app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
 app.use(session({
-  secret: "keyboard cat",
+  secret: "pajamas are anytime wear",
   resave: true,
   saveUninitialized: true
 }));
@@ -38,7 +38,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var syncOptions = {
+const syncOptions = {
   force: false
 };
 

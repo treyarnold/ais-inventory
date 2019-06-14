@@ -13,13 +13,13 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-    //   res.render("example", {
-    //     example: dbExample
-    //   });
-    // });
-  });
+  // app.get("/example/:id", function(req, res) {
+  //   // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  //   //   res.render("example", {
+  //   //     example: dbExample
+  //   //   });
+  //   // });
+  // });
 
   // Render 404 page for any unmatched routes
   // app.get("*", function(req, res) {
@@ -28,5 +28,9 @@ module.exports = function(app) {
 
   app.get("/scanner", function(req, res) {
     res.render("scanner");
+  });
+
+  app.get("/pos", function(req, res) {
+    res.render("pos");
   });
 };
