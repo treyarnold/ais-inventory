@@ -14,6 +14,7 @@
     "bcrypt": "^3.0.6",
     "bcrypt-nodejs": "0.0.3",
     "dotenv": "^8.0.0",
+    "dynamsoft-javascript-barcode": "^6.5.3",
     "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.2",
