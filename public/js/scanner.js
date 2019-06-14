@@ -1,7 +1,14 @@
-$("#less").on("click", () => {
-  console.log("less");
+$("#less").on("click", (event) => {
+  event.preventDefault();
+  let quantity = parseFloat($("#quantity").val().trim());
+  if (quantity <= 0) return
+  quantity = quantity - .25;
+  $("#quantity").val(quantity);
 })
 
-$("#more").on("click", () => {
-  console.log("more");
+$("#more").on("click", (event) => {
+  event.preventDefault();
+  let quantity = parseFloat($("#quantity").val().trim());
+  quantity = quantity + .25;
+  $("#quantity").val(quantity);
 })
