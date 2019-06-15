@@ -14,5 +14,10 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
         }
     });
+
+    Ingredient.associate = function(model) {
+        Ingredient.belongsTo(model.Drink);
+    }
+
     return Ingredient;
 };

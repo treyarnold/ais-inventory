@@ -15,5 +15,11 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
         }
     });
+
+    Order.associate = function(model){
+        Order.hasMany(model.Drink);
+        Order.belongsTo(model.User);
+    }
+
     return Order;
 };

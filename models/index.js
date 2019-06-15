@@ -39,4 +39,19 @@ Object.keys(db).forEach(function (modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// Associations
+// users to orders
+// db.user.hasMany(db.order);
+// db.order.belongsTo(db.user);
+
+// drinks to orders
+// db.order.hasMany(db.drinks);
+// db.drinks.belongsTo(db.order);
+
+// Ingredients to drinks
+// db.drinks.hasMany(db.ingredients);
+// db.ingredients.belongsTo(db.drinks);
+
+
+
 module.exports = db;
