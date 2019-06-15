@@ -9,7 +9,7 @@ module.exports = function(app) {
     //     examples: dbExamples
     //   });
     // });
-    res.send("home");
+    res.render("login");
   });
 
   // Load example page and pass in an example by id
@@ -32,5 +32,13 @@ module.exports = function(app) {
 
   app.get("/pos", function(req, res) {
     res.render("pos");
+  });
+
+  app.get("/register", function(req, res) {
+    res.render("register");
+  });
+
+  app.get("/login", function(req, res) {
+    res.render("login");
   });
 };

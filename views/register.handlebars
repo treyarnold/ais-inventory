@@ -1,0 +1,20 @@
+{{> navbar}}
+
+<div class="container mt-5">
+  <form action="/api/user" method="post">
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter username">
+    </div>
+    <div class="form-group">
+      <label for="userEmail">Email address</label>
+      <input type="email" class="form-control" id="userEmail" name="email" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" id="password" placeholder="Create Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
