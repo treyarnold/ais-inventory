@@ -35,23 +35,143 @@ font-family: 'Teko', sans-serif;
     display:none;
 }
 
-.makers:hover + #makers {
+#citadelle {
+    display: none;
+}
+
+#tanqueray {
+    display: none;
+}
+
+#bombay {
+    display: none;
+}
+
+#hendricks {
+    display: none;
+}
+
+#botanist {
+    display: none;
+}
+
+#hornitos {
+    display: none;
+}
+
+#espolon {
+    display: none;
+}
+
+#don {
+    display: none;
+}
+
+#eighteen {
+    display: none;
+}
+
+#casa {
+    display: none;
+}
+
+#taka {
+    display: none;
+}
+
+#titos {
+    display: none;
+}
+
+#ciroc {
+    display: none;
+}
+
+#goose {
+    display: none;
+}
+
+#k1 {
+    display: none;
+}
+
+.makers:hover #makers {
     display: block;
 }
 
-.jack:hover + #jack {
+.jack:hover #jack {
     display: block;
 }
 
-.knob:hover + #knob {
+.knob:hover #knob {
     display: block;
 }
 
-.woodfords:hover + #woodfords {
+.woodfords:hover #woodfords {
     display: block;
 }
 
-.turkey:hover + #turkey {
+.turkey:hover #turkey {
+    display: block;
+}
+
+.citadelle:hover #citadelle {
+    display: block;
+}
+
+.tanqueray:hover #tanqueray {
+    display: block;
+}
+
+.bombay:hover #bombay {
+    display: block;
+}
+
+.hendricks:hover #hendricks {
+    display: block;
+}
+
+.botanist:hover #botanist {
+    display: block;
+}
+
+.hornitos:hover #hornitos {
+    display: block;
+}
+
+.espolon:hover #espolon {
+    display: block;
+}
+
+.don:hover #don {
+    display: block;
+}
+
+.eighteen:hover #eighteen {
+    display: block;
+}
+
+.casa:hover #casa {
+    display: block;
+}
+
+.taka:hover #taka {
+    display: block;
+}
+
+.titos:hover #titos {
+    display: block;
+}
+
+.ciroc:hover #ciroc {
+    display: block;
+}
+
+.goose:hover #goose {
+    display: block;
+}
+
+.k1:hover #k1 {
     display: block;
 }
 

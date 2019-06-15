@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "Valace73!",
     "database": "ais_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "harris",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
