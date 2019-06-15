@@ -28,6 +28,7 @@ module.exports = function (sequelize, DataTypes) {
 
   Inventory.associate = function(model) {
     Inventory.belongsTo(model.Drink);
+  };
 
   return Inventory;
 };
