@@ -1,4 +1,6 @@
-var db = require("../models");
+const db = require("../models");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
+
 
 module.exports = function(app) {
   // Load index page
@@ -8,6 +10,7 @@ module.exports = function(app) {
   })
 
   app.get("/", function(req, res) {
+    console.log(req);
     // db.Example.findAll({}).then(function(dbExamples) {
     //   res.render("index", {
     //     msg: "Welcome!",
@@ -31,19 +34,19 @@ module.exports = function(app) {
   //   // res.render("404");
   // });
 
-  app.get("/scanner", function(req, res) {
-    res.render("scanner");
+  app.get("/scanner", isAuthenticated, function(req, res) {
+    res.render("scanner", {user: req.user});
   });
 
-  app.get("/pos", function(req, res) {
-    res.render("pos");
+  app.get("/pos", isAuthenticated,  function(req, res) {
+    res.render("pos", {user: req.user});
   });
 
   app.get("/register", function(req, res) {
-    res.render("register");
+    res.render("register", {user: req.user});
   });
 
   app.get("/login", function(req, res) {
-    res.render("login");
+    res.render("login", {user: req.user});
   });
 };
