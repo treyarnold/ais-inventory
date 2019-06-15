@@ -4,8 +4,16 @@ const passport = require("../config/passport");
 module.exports = function (app) {
   // Get all inventory
   app.get("/api/inventory", function (req, res) {
+    console.log(res)
     db.Inventory.findAll({}).then(function (dbInventory) {
       res.json(dbInventory);
+    });
+  });
+
+  app.get("/api/drinks", function (req, res) {
+    console.log(res)
+    db.Drinks.findAll().then(function (dbDrinks) {
+      res.json(dbDrinks);
     });
   });
 
