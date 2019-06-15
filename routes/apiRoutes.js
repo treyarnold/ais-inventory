@@ -1,10 +1,10 @@
 var db = require("../models");
-
 module.exports = function (app) {
-  // Get all inventory
-  app.get("/api/inventory", function (req, res) {
-    db.Inventory.findAll({}).then(function (dbInventory) {
-      res.json(dbInventory);
+  // Get all drinks
+  app.get("/api/drinks", function (req, res) {
+    db.drink.findAll({}).then(function (dbdrinks) {
+      console.log(dbdrinks);
+      res.json(dbdrinks);
     });
   });
 

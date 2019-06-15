@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Ingredient.associate = function(model) {
-        Ingredient.belongsTo(model.Drink);
+        Ingredient.belongsTo(model.drink);
     }
 
     return Ingredient;

@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Order.associate = function(model){
-        Order.hasMany(model.Drink);
+        Order.hasMany(model.drink);
         Order.belongsTo(model.User);
     }
 
