@@ -1,17 +1,31 @@
 // Get references to page elements
+
+$( document ).ready(function (){
+
+
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $searchBox = $("#search").val();
 
 
 console.log("loaded")
+console.log($searchBox)
 
 
 $("#search").on("click",function (){
+  console.log($searchBox);
+});
+
+
+$("#search").keyup(function(e) {
   document.preventDefault();
-  console.log($("#search".val))
-})
+  if (e.which == 13) {
+      $("#search").click();
+  }
+  console.log($searchBox)
+});
 
 
 
@@ -108,3 +122,4 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+});
