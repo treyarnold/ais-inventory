@@ -25,5 +25,9 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   });
+
+  Inventory.associate = function(model) {
+    Inventory.belongsTo(model.Drink);
+
   return Inventory;
 };
