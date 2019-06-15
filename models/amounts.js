@@ -17,5 +17,5 @@ module.exports = function (sequelize, DataTypes) {
         Amount.belongsTo(model.Ingredient);
     }
 
-    return Ingredient;
+    return Amount;
 };
