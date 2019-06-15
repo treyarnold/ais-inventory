@@ -1,7 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-    var Ingredient = sequelize.define("Ingredient", {
+    var Amount = sequelize.define("Amount", {
         amount: DataTypes.DOUBLE,
-        num_sold: DataTypes.DOUBLE,
         createdAt: {
             allowNull: false,
             type: DataTypes.DATE,
@@ -14,9 +13,9 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Ingredient.associate = function(model) {
-        Ingredient.belongsTo(model.Drink);
+    Amount.associate = function(model) {
+        Amount.belongsTo(model.Ingredient);
     }
 
-    return Ingredient;
+    return Amount;
 };

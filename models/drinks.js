@@ -2,7 +2,9 @@ module.exports = function (sequelize, DataTypes) {
     var Drink = sequelize.define("Drink", {
         drink_name: DataTypes.STRING,
         drink_type: DataTypes.STRING,
+        price: DataTypes.DOUBLE,
         num_sold: DataTypes.DOUBLE,
+        pic_url: DataTypes.STRING,
         createdAt: {
             allowNull: false,
             type: DataTypes.DATE,
