@@ -1,8 +1,33 @@
 // Get references to page elements
+
+$( document ).ready(function (){
+
+
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $searchBox = $("#search").val();
+
+
+console.log("loaded")
+console.log($searchBox)
+
+
+$("#search").on("click",function (){
+  console.log($searchBox);
+});
+
+
+$("#search").keyup(function(e) {
+  document.preventDefault();
+  if (e.which == 13) {
+      $("#search").click();
+  }
+  console.log($searchBox)
+});
+
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -97,3 +122,4 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+});
