@@ -4,6 +4,17 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+
+console.log("loaded")
+
+
+$("#search").on("click",function (){
+  document.preventDefault();
+  console.log($("#search".val))
+})
+
+
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
