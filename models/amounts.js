@@ -17,7 +17,9 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     DrinkAmount = sequelize.define('drink_amount', {
-        role: Sequelize.STRING
+        role: Sequelize.STRING,
+    }, {
+        timestamps: false,
     });
 
     Amount.associate = function(model) {

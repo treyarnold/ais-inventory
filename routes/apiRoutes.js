@@ -50,7 +50,7 @@ module.exports = function (app) {
 // get orders
 
   app.get("/api/orders", function (req, res) {
-    db.order.findAll({
+    db.order.find({
       include: [
         {model: db.drink},
       ]
@@ -59,8 +59,16 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/test", function (req, res) {
+    db.drink.getAmounts({
+    }).then(function (dborder) {
+      res.json(dborder);
+    });
+  });
+
+
   app.get("/api/orders/:id", function (req, res) {
-    db.Inventory.findAll({
+    db.order.findAll({
       include: [
         {model: db.drink},
       ],

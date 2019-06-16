@@ -27,7 +27,9 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   DrinkInventory = sequelize.define('drink_inventory', {
-    role: Sequelize.STRING
+    role: Sequelize.STRING,
+  }, {
+    timestamps: false,
 });
 
 

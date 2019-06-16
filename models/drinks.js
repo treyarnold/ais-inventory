@@ -21,7 +21,9 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     DrinkOrders = sequelize.define('drink_orders', {
-        role: Sequelize.STRING
+        role: Sequelize.STRING,
+    }, {
+        timestamps: false,
     });
 
 
