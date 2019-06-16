@@ -27,3 +27,4 @@ INSERT INTO inventories (name, type, quantity_bottles, price_bottle, inventory_v
 ('Kraken', 'Rum', 5, 20, 100);
 
 
+
