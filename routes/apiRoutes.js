@@ -8,12 +8,21 @@ module.exports = function (app) {
     });
   });
 
-  // Add a new inventory item
-  app.post("/api/inventory", function (req, res) {
-    db.Inventory.create(req.body).then(function (dbInventory) {
-      res.json(dbInventory);
+// get inventory
+
+  app.get("/api/inventory", function (req, res) {
+    db.inventory.findAll({}).then(function (dbinventory) {
+      console.log(dbinventory);
+      res.json(dbinventory);
     });
   });
+
+  // Add a new inventory item
+  // app.post("/api/inventory", function (req, res) {
+  //   db.inventory.create(req.body).then(function (dbinventory) {
+  //     res.json(dbinventory);
+  //   });
+  // });
 
   // Delete an inventory item by id
   app.get("/api/inventory/:id", function (req, res) {

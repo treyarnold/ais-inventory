@@ -1,7 +1,7 @@
 var Sequelize = require("sequelize");
 
 module.exports = function (sequelize, DataTypes) {
-    var Order = sequelize.define("Order", {
+    var Order = sequelize.define("order", {
         total_price: DataTypes.DOUBLE,
         datetime: DataTypes.DATE,
         createdAt: {
@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Order.associate = function(model){
         Order.hasMany(model.drink);
-        Order.belongsTo(model.User);
+        Order.belongsTo(model.user);
     }
 
     return Order;

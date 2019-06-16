@@ -2,7 +2,7 @@ var Sequelize = require("sequelize");
 
 
 module.exports = function (sequelize, DataTypes) {
-  var Inventory = sequelize.define("Inventory", {
+  var Inventory = sequelize.define("inventory", {
     name: DataTypes.STRING,
     type: DataTypes.STRING,
     quantity_bottles: DataTypes.DOUBLE,
