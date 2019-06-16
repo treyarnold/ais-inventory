@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Drink.associate = function(model) {
         Drink.hasMany(model.inventory);
-        Drink.hasMany(model.amount);
+        Drink.hasOne(model.amount);
         Drink.belongsTo(model.order);
     }
 
