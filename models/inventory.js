@@ -26,8 +26,14 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
+  DrinkInventory = sequelize.define('drink_inventory', {
+    role: Sequelize.STRING
+});
+
+
+
   Inventory.associate = function(model) {
-    Inventory.belongsTo(model.drink);
+    Inventory.belongsToMany(model.drink, {through: DrinkInventory});
   };
 
   return Inventory;

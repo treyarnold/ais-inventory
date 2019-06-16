@@ -1,3 +1,6 @@
+var Sequelize = require("sequelize");
+
+
 module.exports = function (sequelize, DataTypes) {
     var Drink = sequelize.define("drink", {
         drink_name: DataTypes.STRING,
@@ -17,10 +20,16 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
+    DrinkOrders = sequelize.define('drink_orders', {
+        role: Sequelize.STRING
+    });
+
+
+
     Drink.associate = function(model) {
         Drink.hasMany(model.inventory);
         Drink.hasOne(model.amount);
-        Drink.belongsTo(model.order);
+        Drink.belongsToMany(model.order, {through: DrinkOrders});
     }
 
     return Drink;
