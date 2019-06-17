@@ -26,11 +26,30 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  DrinkInventory = sequelize.define('drink_inventory', {
-    role: Sequelize.STRING,
-  }, {
+  DrinkInventory = sequelize.define('drink_inventory', {}, {
     timestamps: false,
 });
+
+// DrinkInventory.associate = function(model){
+// DrinkInventory.belongsTo(model.drink);
+// DrinkInventory.belongsTo(model.inventory)
+// };
+
+// const seed = ()=> {
+//   return sequelize.sync()
+//       .then(()=> {
+//           return Promise.all([
+//               drink.create({
+//                   drink_name: 'Old Fashioned',
+//                   price: 4,
+//                   pic_url:'https://cdn.liquor.com/wp-content/uploads/2017/08/08074649/6-Rules-for-Drinking-Bourbone-bourbon-old-fashioned-720x720-slideshow.jpg'
+//               }),
+//               inventory.create ({type: 'Vodka'}),
+//               inventory.create({type:'Whiskey'})
+//           ])
+//       })
+// }
+// seed();
 
 
 

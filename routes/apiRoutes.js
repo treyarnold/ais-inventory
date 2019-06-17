@@ -60,11 +60,10 @@ module.exports = function (app) {
   });
 
   app.get("/api/test", function (req, res) {
-    db.drink.getAmounts({
-    }).then(function (dborder) {
+    db.drink.get().then(function (dborder) {
       res.json(dborder);
     });
-  });
+});
 
 
   app.get("/api/orders/:id", function (req, res) {

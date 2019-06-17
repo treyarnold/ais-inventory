@@ -20,11 +20,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    DrinkOrders = sequelize.define('drink_orders', {
-        role: Sequelize.STRING,
-    }, {
+    DrinkOrders = sequelize.define('drink_orders', {}, {
         timestamps: false,
     });
+
+    // DrinkOrders.associate = function (model){
+    // DrinkOrders.belongsTo(model.drink);
+    // DrinkOrders.belongsTo(model.order);
 
 
 
@@ -32,7 +34,7 @@ module.exports = function (sequelize, DataTypes) {
         Drink.hasMany(model.inventory);
         Drink.hasOne(model.amount);
         Drink.belongsToMany(model.order, {through: DrinkOrders});
-    }
+    };
 
     return Drink;
 };
