@@ -1,5 +1,5 @@
 const db = require("../models");
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op
 
 module.exports = function (app) {
@@ -10,22 +10,31 @@ module.exports = function (app) {
     db.drink.findAll({
       include: [
         {model: db.inventory, attributes: ['name', 'type']},
-        {model: db.amount, attributes: ['amount']}
-      ]
-    }).then(function (dbdrinks) {
+        {model: db.amount, attributes: ['amount']}]
+        // where: {id: {
+        //   [Op.gt]: 0}}
+        // }]
+      }).then(function (dbdrinks) {
       res.json(dbdrinks);
     });
   });
 
   app.get("/api/drinks/:id", function (req, res) {
-    db.drink.findAll({
-      include: [
-        {model: db.inventory, attributes: ['name', 'type']},
-        {model: db.amount, attributes: ['amount']}
-      ],
-      where: {
-        id: req.params.id
-      }
+    db.inventory.findAll({
+      include: [{
+        model: db.drink,
+        where: {id: {
+          [Op.eq]: req.params.id}},
+        // through: db.drink_orders,
+      }]
+
+      // include: [
+      //   {model: db.inventory, attributes: ['name', 'type']},
+      //   {model: db.amount, attributes: ['amount']}
+      // ],
+      // where: {
+      //   id: req.params.id
+      // }
     }).then(function (dbdrinks) {
       res.json(dbdrinks);
     });
@@ -40,11 +49,13 @@ module.exports = function (app) {
   });
 
   app.get("/api/inventory/:id", function (req, res) {
-    db.Inventory.findAll({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dbInventory) {
+    db.drink.findAll({
+      include: [{
+        model: db.inventory,
+        where: {id: {
+          [Op.eq]: req.params.id}},
+      }]
+  }).then(function (dbInventory) {
       res.json(dbInventory);
     });
   });
@@ -64,14 +75,15 @@ module.exports = function (app) {
   });
 
   app.get("/api/order/:id", function (req, res) {
-    db.order.findAll({
+    db.drink.findAll({
       // where: {
       //   id: req.params.id
       // }, 
       include: [{
-        model: db.drink,
-        where: {orderId: {
-          [Op.eq]: req.params.id}}
+        model: db.order,
+        where: {id: {
+          [Op.eq]: req.params.id}},
+        // through: db.drink_orders,
       }]
     }).then(function (dbInventory) {
       res.json(dbInventory);
