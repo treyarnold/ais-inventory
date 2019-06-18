@@ -1,5 +1,8 @@
+var Sequelize = require("sequelize");
+
+
 module.exports = function (sequelize, DataTypes) {
-    var Drink = sequelize.define("Drink", {
+    var Drink = sequelize.define("drink", {
         drink_name: DataTypes.STRING,
         drink_type: DataTypes.STRING,
         price: DataTypes.DOUBLE,
@@ -17,10 +20,21 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
+    DrinkOrders = sequelize.define('drink_orders', {}, {
+        timestamps: false,
+    });
+
+    // DrinkOrders.associate = function (model){
+    // DrinkOrders.belongsTo(model.drink);
+    // DrinkOrders.belongsTo(model.order);
+
+
+
     Drink.associate = function(model) {
-        Drink.hasMany(model.Ingredient);
-        Drink.belongsTo(model.Order);
-    }
+        Drink.hasMany(model.inventory);
+        Drink.hasOne(model.amount);
+        Drink.belongsToMany(model.order, {through: DrinkOrders});
+    };
 
     return Drink;
 };

@@ -1,5 +1,8 @@
+var Sequelize = require("sequelize");
+
+
 module.exports = function (sequelize, DataTypes) {
-    var Amount = sequelize.define("Amount", {
+    var Amount = sequelize.define("amount", {
         amount: DataTypes.DOUBLE,
         createdAt: {
             allowNull: false,
@@ -13,8 +16,14 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
+    DrinkAmount = sequelize.define('drink_amount', {
+        role: Sequelize.STRING,
+    }, {
+        timestamps: false,
+    });
+
     Amount.associate = function(model) {
-        Amount.belongsTo(model.Ingredient);
+        Amount.belongsToMany(model.drink, {through: DrinkAmount});
     }
 
     return Amount;

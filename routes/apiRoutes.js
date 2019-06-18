@@ -1,53 +1,114 @@
 const db = require("../models");
-const passport = require("../config/passport");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op
 
 module.exports = function (app) {
-  // Get all inventory
-  app.get("/api/inventory", function (req, res) {
-    console.log(res)
-    db.Inventory.findAll({}).then(function (dbInventory) {
-      res.json(dbInventory);
-    });
-  });
+  
+  // Get drinks
 
   app.get("/api/drinks", function (req, res) {
-    console.log(res)
-    db.Drinks.findAll().then(function (dbDrinks) {
-      res.json(dbDrinks);
+    db.drink.findAll({
+      include: [
+        {model: db.inventory, attributes: ['name', 'type']},
+        {model: db.amount, attributes: ['amount']}]
+        // where: {id: {
+        //   [Op.gt]: 0}}
+        // }]
+      }).then(function (dbdrinks) {
+      res.json(dbdrinks);
     });
   });
 
-  // Add a new inventory item
-  app.post("/api/inventory", function (req, res) {
-    db.Inventory.create(req.body).then(function (dbInventory) {
+  app.get("/api/drinks/:id", function (req, res) {
+    db.inventory.findAll({
+      include: [{
+        model: db.drink,
+        where: {id: {
+          [Op.eq]: req.params.id}},
+        // through: db.drink_orders,
+      }]
+
+      // include: [
+      //   {model: db.inventory, attributes: ['name', 'type']},
+      //   {model: db.amount, attributes: ['amount']}
+      // ],
+      // where: {
+      //   id: req.params.id
+      // }
+    }).then(function (dbdrinks) {
+      res.json(dbdrinks);
+    });
+  });
+
+// get inventory
+
+  app.get("/api/inventory", function (req, res) {
+    db.inventory.findAll({}).then(function (dbinventory) {
+      res.json(dbinventory);
+    });
+  });
+
+  app.get("/api/inventory/:id", function (req, res) {
+    db.drink.findAll({
+      include: [{
+        model: db.inventory,
+        where: {id: {
+          [Op.eq]: req.params.id}},
+      }]
+  }).then(function (dbInventory) {
       res.json(dbInventory);
     });
   });
 
-  app.post("/api/user", function (req, res) {
-    db.User.create(req.body).then(function (dbUser) {
-      res.redirect("/pos");
+
+// get orders
+
+  app.get("/api/order", function (req, res) {
+    console.log(db.order)
+    db.order.findAll({
+      include: [
+        {model: db.drink},
+      ]
+    }).then(function (dborder) {
+      res.json(dborder);
     });
   });
 
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.redirect("/pos");
-  });
-
-  app.get("/api/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  });
-
-  // Delete an inventory item by id
-  app.get("/api/inventory/:id", function (req, res) {
-    console.log(req.params.id)
-    db.Inventory.findAll({
-      where: {
-        id: req.params.id
-      }
+  app.get("/api/order/:id", function (req, res) {
+    db.drink.findAll({
+      // where: {
+      //   id: req.params.id
+      // }, 
+      include: [{
+        model: db.order,
+        where: {id: {
+          [Op.eq]: req.params.id}},
+        // through: db.drink_orders,
+      }]
     }).then(function (dbInventory) {
       res.json(dbInventory);
     });
   });
-};
+
+
+
+  app.get("/api/test", function (req, res) {
+    db.drink.getInventory().then(function (dborder) {
+      res.json(dborder);
+    });
+});
+
+
+
+  // post routes
+  // Add a new inventory item
+
+  app.post("/api/inventory", function (req, res) {
+    db.inventory.create(req.body).then(function (dbinventory) {
+      res.json(dbinventory);
+    });
+  });
+
+  // delete routes
+
+  };
