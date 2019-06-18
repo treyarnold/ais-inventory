@@ -1,4 +1,7 @@
-var db = require("../models");
+const db = require("../models");
+var Sequelize = require("sequelize");
+const Op = Sequelize.Op
+
 module.exports = function (app) {
   
   // Get drinks
@@ -49,8 +52,9 @@ module.exports = function (app) {
 
 // get orders
 
-  app.get("/api/orders", function (req, res) {
-    db.order.find({
+  app.get("/api/order", function (req, res) {
+    console.log(db.order)
+    db.order.findAll({
       include: [
         {model: db.drink},
       ]
@@ -59,25 +63,29 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/order/:id", function (req, res) {
+    db.order.findAll({
+      // where: {
+      //   id: req.params.id
+      // }, 
+      include: [{
+        model: db.drink,
+        where: {orderId: {
+          [Op.eq]: req.params.id}}
+      }]
+    }).then(function (dbInventory) {
+      res.json(dbInventory);
+    });
+  });
+
+
+
   app.get("/api/test", function (req, res) {
-    db.drink.get().then(function (dborder) {
+    db.drink.getInventory().then(function (dborder) {
       res.json(dborder);
     });
 });
 
-
-  app.get("/api/orders/:id", function (req, res) {
-    db.order.findAll({
-      include: [
-        {model: db.drink},
-      ],
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dborder) {
-      res.json(dborder);
-    });
-  });
 
 
   // post routes
