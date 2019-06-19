@@ -8,10 +8,17 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 var $searchBox = $("#search").val();
+var $export = $("#export").val();
 
 
 console.log("loaded")
-console.log($searchBox)
+// console.log($searchBox)
+
+$('#export').on('click', function(){
+$('table').csvExport({
+  title:'AIS_Inventory'
+});
+});
 
 
 $("#search").on("click",function (){
@@ -41,9 +48,9 @@ var API = {
       data: JSON.stringify(example)
     });
   },
-  getExamples: function() {
+  getInventory: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/inventory",
       type: "GET"
     });
   },
@@ -57,16 +64,16 @@ var API = {
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+  API.getInventory().then(function(data) {
+    var $examples = data.map(function(inventory) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .text(inventory.text)
+        .attr("href", "/inventory/" + inventory.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": inventory.id
         })
         .append($a);
 

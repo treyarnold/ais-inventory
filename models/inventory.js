@@ -52,7 +52,6 @@ module.exports = function (sequelize, DataTypes) {
 // seed();
 
 
-
   Inventory.associate = function(model) {
     Inventory.belongsToMany(model.drink, {through: DrinkInventory});
   };

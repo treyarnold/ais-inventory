@@ -44,7 +44,7 @@ module.exports = function (app) {
 
   app.get("/api/inventory", function (req, res) {
     db.inventory.findAll({}).then(function (dbinventory) {
-      res.json(dbinventory);
+      res.render("inventory", dbinventory);
     });
   });
 
