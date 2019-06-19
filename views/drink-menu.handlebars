@@ -1,9 +1,9 @@
   {{> navbar }}
-  <container class="text-center">
     <div class="jumbotron mx-auto jumbotron-fluid">
       <h1 class="display-4">Drink Menu</h1>
       </div>
-<table id="table" class="table-bordered table-condensed mx-auto p-3 m-5 table-large">
+  <container class="text-center">
+{{!-- <table id="table" class="table-bordered table-condensed mx-auto p-3 m-5 table-large">
     <tbody>
       <thead>
         <tr>
@@ -13,16 +13,16 @@
         </tr>
       </thead>
         {{#each data}}
-                <td>{{this.drink_name}}</td>
-                <td>{{this.price}}</td>
-                <td>{{this.num_sold}}</td>
-            </tr>
-        {{/each}}
     </tbody>
 </table>
-<div>
-    
-</div>
+<div> --}}
+        {{#each data}}
+                {{this.drink_name}}
+                {{this.price}}
+                {{this.num_sold}}
+        {{/each}}
+
+{{!-- </div> --}}
 <div>
 <container>
 <button id="export" class="center-block btn-lg btn btn-warning">
