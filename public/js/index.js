@@ -8,10 +8,17 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 var $searchBox = $("#search").val();
+var $export = $("#export").val();
 
 
 console.log("loaded")
-console.log($searchBox)
+// console.log($searchBox)
+
+$('#export').on('click', function(){
+$('table').csvExport({
+  title:'AIS_Inventory'
+});
+});
 
 
 $("#search").on("click",function (){

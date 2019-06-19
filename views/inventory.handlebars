@@ -10,15 +10,42 @@
 		<div class="row">
 		
 	</div> --}}
-<table>
+
+  {{> navbar }}
+  <container class="text-center">
+    <div class="jumbotron mx-auto jumbotron-fluid">
+      <h1 class="display-4">Inventory</h1>
+      </div>
+<table id="table" class="table-bordered table-condensed mx-auto p-3 m-5 table-large">
     <tbody>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Type</th>
+          <th scope="col"># of Bottles</th>
+          <th scope="col">Price per Bottle</th>
+          <th scope="col">Total Inv Value</th>
+          <th scope="col">UPC</th>
+          <th scope="col">Reorder?</th>
+        </tr>
+      </thead>
         {{#each data}}
-            <tr>
                 <td>{{this.name}}</td>
                 <td>{{this.type}}</td>
+                <td>{{this.quantity_bottles}}</td>
+                <td>{{this.price_bottle}}</td>
+                <td>{{this.inventory_value}}</td>
+                <td>{{this.UPC}}</td>
+                <td>{{this.reorder}}</td>
             </tr>
         {{/each}}
     </tbody>
 </table>
+<div>
+<container>
+<button id="export" class="center-block btn-lg btn btn-warning">
+  <span style="font-size:larger;">Export Data</span></button>
+</container>
+</div>
+</container>
 
-        <script src="js/inventory.js" type="text/javascript"></script>

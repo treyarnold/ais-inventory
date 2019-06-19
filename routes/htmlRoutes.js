@@ -14,13 +14,13 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  // app.get("/example/:id", function(req, res) {
-  //   // db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-  //   //   res.render("example", {
-  //   //     example: dbExample
-  //   //   });
-  //   // });
-  // });
+  app.get("/example/:id", function(req, res) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+      res.render("example", {
+        example: dbExample
+      });
+    });
+  });
 
   // Render 404 page for any unmatched routes
   // app.get("*", function(req, res) {
@@ -32,8 +32,23 @@ module.exports = function(app) {
   });
 
   app.get("/inventory", function(req, res){
-    res.render("inventory", {data: res})
+    db.inventory.findAll({}).then(function(dbinventory){
+      res.render("inventory", {data: dbinventory})
+    })
   })
+
+  app.get("/orders", function(req, res){
+    db.order.findAll({}).then(function(dbOrders){
+      res.render("order", {data: dbOrders})
+    })
+  })
+
+
+  // app.get("/inventory", function(req, res){
+  //   db.inventory.findAll({}).then(function (res) {
+  //     res.render("inventory", {data: res})
+  //   });
+  // });
 
   app.get("/pos", function(req, res) {
     res.render("pos", {user: req.user});
