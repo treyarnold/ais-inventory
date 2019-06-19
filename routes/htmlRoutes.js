@@ -34,11 +34,15 @@ module.exports = function(app) {
   //   // res.render("404");
   // });
 
-  app.get("/scanner", isAuthenticated, function(req, res) {
+  app.get("/scanner", function(req, res) {
     res.render("scanner", {user: req.user});
   });
 
-  app.get("/pos", isAuthenticated,  function(req, res) {
+  app.get("/inventory", function(req, res){
+    res.render("inventory", {data: res})
+  })
+
+  app.get("/pos", function(req, res) {
     res.render("pos", {user: req.user});
   });
 
