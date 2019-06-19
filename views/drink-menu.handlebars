@@ -1,25 +1,28 @@
   {{> navbar }}
   <container class="text-center">
     <div class="jumbotron mx-auto jumbotron-fluid">
-      <h1 class="display-4">Orders</h1>
+      <h1 class="display-4">Drink Menu</h1>
       </div>
 <table id="table" class="table-bordered table-condensed mx-auto p-3 m-5 table-large">
     <tbody>
       <thead>
         <tr>
-          <th scope="col">Order #</th>
-          <th scope="col">Total</th>
-          <th scope="col">Order Time</th>
+          <th scope="col">Drink Name</th>
+          <th scope="col">Price Per</th>
+          <th scope="col">Number Sold</th>
         </tr>
       </thead>
         {{#each data}}
-                <td>{{this.id}}</td>
-                <td>{{this.total_price}}</td>
-                <td>{{this.createdAt}}</td>
+                <td>{{this.drink_name}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.num_sold}}</td>
             </tr>
         {{/each}}
     </tbody>
 </table>
+<div>
+    
+</div>
 <div>
 <container>
 <button id="export" class="center-block btn-lg btn btn-warning">

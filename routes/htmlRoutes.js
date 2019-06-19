@@ -1,6 +1,7 @@
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op
 
 module.exports = function(app) {
   // Load index page
@@ -36,12 +37,35 @@ module.exports = function(app) {
       res.render("inventory", {data: dbinventory})
     })
   })
+  app.get("/drinks", function(req, res){
+    db.drink.findAll({}).then(function(dbdrinks){
+      res.render("drink-menu", {data: dbdrinks})
+    })
+  })
 
   app.get("/orders", function(req, res){
     db.order.findAll({}).then(function(dbOrders){
       res.render("order", {data: dbOrders})
     })
   })
+
+  app.get("/orders/:id", function(req, res){
+    db.drink.findAll({
+    // where: {
+    //   id: req.params.id
+    // }, 
+    include: [{
+      model: db.order,
+      where: {id: {
+        [Op.eq]: req.params.id}},
+      // through: db.drink_orders,
+    }]
+  }).then(function (dbOrders) {
+    console.log(dbOrders)
+      res.render("order-single", {data: dbOrders})
+    })
+  })
+
 
 
   // app.get("/inventory", function(req, res){
