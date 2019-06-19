@@ -1,7 +1,7 @@
 {{> navbar}}
 
 <div class="container">
-  <div class="row">
+  <div class="row mb-4">
     <!-- picker -->
     <div class="col-md-3 col-0"></div>
     <div class="col-md-6">
@@ -27,6 +27,10 @@
 </div>
 
 <div class="container">
+  <div class="row">
+    <div class="col text-info align-items-center pl-5" id="liquorInfo"> </div>
+    <div class="col"><span class="d-none" id="upc"></span></div>
+  </div>
   <form action="">
     <div class="row">
       <div class="col">
@@ -37,18 +41,18 @@
       </div>
       <div class="col">
         <div class="form-group">
-          <label for="bottleName">Liqour Type</label>
+          <label for="bottleName">Liquor Type</label>
           {{!-- <div class="input-group-append"> --}}
-            <button class="btn btn-success btn-block dropdown-toggle" type="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">Liqour</button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Gin</a>
-              <a class="dropdown-item" href="#">Rum</a>
-              <a class="dropdown-item" href="#">Scotch</a>
-              <a class="dropdown-item" href="#">Tequila</a>
-              <a class="dropdown-item" href="#">Vodka</a>
-              <a class="dropdown-item" href="#">Whiskey</a>
-            </div>
+          <button class="btn btn-success btn-block dropdown-toggle" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" id="liquorType">Liquor</button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Gin</a>
+            <a class="dropdown-item" href="#">Rum</a>
+            <a class="dropdown-item" href="#">Scotch</a>
+            <a class="dropdown-item" href="#">Tequila</a>
+            <a class="dropdown-item" href="#">Vodka</a>
+            <a class="dropdown-item" href="#">Whiskey</a>
+          </div>
           {{!-- </div> --}}
         </div>
       </div>
@@ -59,12 +63,13 @@
       <div class="input-group-prepend">
         <button class="btn btn-warning" id="less">Less</button>
       </div>
-      <input type="text" class="form-control text-center" id="quantity" value="0">
+      <input type="number" min="0" step=".25" class="form-control text-center" id="quantity" value="0">
       <div class="input-group-append">
         <button class="btn btn-success" id="more">More</button>
       </div>
     </div>
-    <button class="mt-3" type="submit">Done</button>
+    <span class="text-danger" id="submitMessage"></span>
+    <button class="mt-3 btn btn-success" type="submit" id="liquorSubmit">Submit</button>
   </form>
 </div>
 

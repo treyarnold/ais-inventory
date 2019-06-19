@@ -3,18 +3,18 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op
 
 module.exports = function (app) {
-  
+
   // Get drinks
 
   app.get("/api/drinks", function (req, res) {
     db.drink.findAll({
       include: [
-        {model: db.inventory, attributes: ['name', 'type']},
-        {model: db.amount, attributes: ['amount']}]
-        // where: {id: {
-        //   [Op.gt]: 0}}
-        // }]
-      }).then(function (dbdrinks) {
+        { model: db.inventory, attributes: ['name', 'type'] },
+        { model: db.amount, attributes: ['amount'] }]
+      // where: {id: {
+      //   [Op.gt]: 0}}
+      // }]
+    }).then(function (dbdrinks) {
       res.json(dbdrinks);
     });
   });
@@ -23,8 +23,11 @@ module.exports = function (app) {
     db.inventory.findAll({
       include: [{
         model: db.drink,
-        where: {id: {
-          [Op.eq]: req.params.id}},
+        where: {
+          id: {
+            [Op.eq]: req.params.id
+          }
+        },
         // through: db.drink_orders,
       }]
 
@@ -40,7 +43,7 @@ module.exports = function (app) {
     });
   });
 
-// get inventory
+  // get inventory
 
   app.get("/api/inventory", function (req, res) {
     db.inventory.findAll({}).then(function (dbinventory) {
@@ -52,22 +55,34 @@ module.exports = function (app) {
     db.drink.findAll({
       include: [{
         model: db.inventory,
-        where: {id: {
-          [Op.eq]: req.params.id}},
+        where: {
+          id: {
+            [Op.eq]: req.params.id
+          }
+        },
       }]
-  }).then(function (dbInventory) {
+    }).then(function (dbInventory) {
+      res.json(dbInventory);
+    });
+  });
+
+  app.get("/api/upc/:upc", function (req, res) {
+    db.inventory.findAll({
+      where: { UPC: req.params.upc }
+    },
+    ).then(function (dbInventory) {
       res.json(dbInventory);
     });
   });
 
 
-// get orders
+  // get orders
 
   app.get("/api/order", function (req, res) {
     console.log(db.order)
     db.order.findAll({
       include: [
-        {model: db.drink},
+        { model: db.drink },
       ]
     }).then(function (dborder) {
       res.json(dborder);
@@ -81,8 +96,11 @@ module.exports = function (app) {
       // }, 
       include: [{
         model: db.order,
-        where: {id: {
-          [Op.eq]: req.params.id}},
+        where: {
+          id: {
+            [Op.eq]: req.params.id
+          }
+        },
         // through: db.drink_orders,
       }]
     }).then(function (dbInventory) {
@@ -96,7 +114,7 @@ module.exports = function (app) {
     db.drink.getInventory().then(function (dborder) {
       res.json(dborder);
     });
-});
+  });
 
 
 
@@ -109,6 +127,19 @@ module.exports = function (app) {
     });
   });
 
+  // update inventory route
+  app.put("/api/inventory", function (req, res) {
+    console.log("update req.body ", req.body);
+    db.inventory.update(req.body, 
+      {
+        where: {
+          UPC: req.body.UPC,
+        }
+      }).then((result) => {
+        res.json(result);
+      });
+  });
+
   // delete routes
 
-  };
+};
