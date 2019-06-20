@@ -108,6 +108,12 @@ module.exports = function (app) {
       res.json(dbDrink);
     });
   });
+  
+  app.post("/api/inventory", function (req, res) {
+    db.inventory.create(req.body).then(function (dbInventory) {
+      res.json(dbInventory);
+    });
+  });
 
   // delete routes
 

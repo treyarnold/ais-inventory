@@ -26,6 +26,9 @@ module.exports = function(app) {
   app.get("/drink/add", function(req, res) {
     res.render("new_drink");
   });
+  app.get("/inventory/add", function(req, res) {
+    res.render("new_inventory");
+  });
 
   // Render 404 page for any unmatched routes
   // app.get("*", function(req, res) {
