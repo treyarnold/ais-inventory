@@ -121,9 +121,15 @@ module.exports = function (app) {
   // post routes
   // Add a new inventory item
 
+  app.post("/api/drinks", function (req, res) {
+    db.drink.create(req.body).then(function (dbDrink) {
+      res.json(dbDrink);
+    });
+  });
+  
   app.post("/api/inventory", function (req, res) {
-    db.inventory.create(req.body).then(function (dbinventory) {
-      res.json(dbinventory);
+    db.inventory.create(req.body).then(function (dbInventory) {
+      res.json(dbInventory);
     });
   });
 

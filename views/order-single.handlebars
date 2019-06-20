@@ -1,20 +1,20 @@
   {{> navbar }}
   <container class="text-center">
     <div class="jumbotron mx-auto jumbotron-fluid">
-      <h1 class="display-4">Orders</h1>
+      <h1 class="display-4">Order Number</h1>
       </div>
 <table id="table" class="table-bordered table-condensed mx-auto p-3 m-5 table-large">
     <tbody>
       <thead>
         <tr>
-          <th scope="col">Order #</th>
-          <th scope="col">Total</th>
+          <th scope="col">Drink</th>
+          <th scope="col">Price</th>
           <th scope="col">Order Time</th>
         </tr>
       </thead>
         {{#each data}}
-                <td>{{this.id}}</td>
-                <td>{{this.total_price}}</td>
+                <td>{{this.drink_name}}</td>
+                <td>{{this.price}}</td>
                 <td>{{this.createdAt}}</td>
             </tr>
         {{/each}}
