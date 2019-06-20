@@ -51,7 +51,9 @@ module.exports = function(app) {
   // });
 
   app.get("/pos", function(req, res) {
-    res.render("pos", {user: req.user});
+    db.drink.findAll({}).then((result) => {
+      res.render("pos", {user: req.user, drinks: result});
+    })
   });
 
   app.get("/register", function(req, res) {

@@ -3,6 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
 const passport = require("./config/passport");
+const Handlebars = require("handlebars");
 
 const db = require("./models");
 
@@ -57,6 +58,14 @@ db.sequelize.sync(syncOptions).then(function () {
       PORT
     );
   });
+});
+
+Handlebars.registerHelper('ifThird', function (index, options) {
+  if((index + 1)%3 == 0){
+     return options.fn(this);
+  } else {
+     return options.inverse(this);
+  }
 });
 
 module.exports = app;
