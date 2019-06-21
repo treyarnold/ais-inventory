@@ -6,24 +6,6 @@ font-family: 'Teko', sans-serif;
 background-size: cover;
 }
 
-/* body, html {
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    color: white;
-   font-family: 'Teko', sans-serif;   
-  }
-  
-  .bg { 
-    /* The image used */
-    /* background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/E8EAEZ4/cu-empty-chair-in-bar-blur-patrons-in-the-background-1080p_nkuozp-t__F0000.png);
-  
-    /* Full height */
-    /* height: 100%;  */
-  
-    /* Center and scale the image nicely */
-    /* background-position: center;
-    background-repeat: no-repeat;
-  } */ 
 
   .center_div{
     margin: 0 auto;

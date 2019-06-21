@@ -24,10 +24,6 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: false,
     });
 
-    // DrinkOrders.associate = function (model){
-    // DrinkOrders.belongsTo(model.drink);
-    // DrinkOrders.belongsTo(model.order);
-
 
 
     Drink.associate = function(model) {

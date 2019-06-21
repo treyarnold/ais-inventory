@@ -11,13 +11,12 @@ module.exports = function (app) {
       include: [
         { model: db.inventory, attributes: ['name', 'type'] },
         { model: db.amount, attributes: ['amount'] }]
-      // where: {id: {
-      //   [Op.gt]: 0}}
-      // }]
     }).then(function (dbdrinks) {
       res.json(dbdrinks);
     });
   });
+
+
 
   app.get("/api/drinks/:id", function (req, res) {
     db.inventory.findAll({
@@ -28,16 +27,7 @@ module.exports = function (app) {
             [Op.eq]: req.params.id
           }
         },
-        // through: db.drink_orders,
       }]
-
-      // include: [
-      //   {model: db.inventory, attributes: ['name', 'type']},
-      //   {model: db.amount, attributes: ['amount']}
-      // ],
-      // where: {
-      //   id: req.params.id
-      // }
     }).then(function (dbdrinks) {
       res.json(dbdrinks);
     });
@@ -91,9 +81,6 @@ module.exports = function (app) {
 
   app.get("/api/order/:id", function (req, res) {
     db.drink.findAll({
-      // where: {
-      //   id: req.params.id
-      // }, 
       include: [{
         model: db.order,
         where: {
@@ -101,7 +88,6 @@ module.exports = function (app) {
             [Op.eq]: req.params.id
           }
         },
-        // through: db.drink_orders,
       }]
     }).then(function (dbInventory) {
       res.json(dbInventory);

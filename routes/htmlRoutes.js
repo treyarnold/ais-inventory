@@ -15,7 +15,7 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
+  app.get("/example/:id", isAuthenticated, function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       res.render("example", {
         example: dbExample
@@ -23,49 +23,41 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/drink/add", function(req, res) {
+  app.get("/drink/add", isAuthenticated, function(req, res) {
     res.render("new_drink");
   });
-  app.get("/inventory/add", function(req, res) {
+  app.get("/inventory/add", isAuthenticated, function(req, res) {
     res.render("new_inventory");
   });
 
-  // Render 404 page for any unmatched routes
-  // app.get("*", function(req, res) {
-  //   // res.render("404");
-  // });
 
-  app.get("/scanner", function(req, res) {
+  app.get("/scanner", isAuthenticated, function(req, res) {
     res.render("scanner", {user: req.user});
   });
 
-  app.get("/inventory", function(req, res){
+  app.get("/inventory", isAuthenticated, function(req, res){
     db.inventory.findAll({}).then(function(dbinventory){
       res.render("inventory", {data: dbinventory})
     })
   })
-  app.get("/drinks", function(req, res){
+  app.get("/drinks", isAuthenticated, function(req, res){
     db.drink.findAll({}).then(function(dbdrinks){
       res.render("drink-menu", {data: dbdrinks})
     })
   })
 
-  app.get("/orders", function(req, res){
+  app.get("/orders", isAuthenticated, function(req, res){
     db.order.findAll({}).then(function(dbOrders){
       res.render("order", {data: dbOrders})
     })
   })
 
-  app.get("/orders/:id", function(req, res){
+  app.get("/orders/:id", isAuthenticated, function(req, res){
     db.drink.findAll({
-    // where: {
-    //   id: req.params.id
-    // }, 
     include: [{
       model: db.order,
       where: {id: {
         [Op.eq]: req.params.id}},
-      // through: db.drink_orders,
     }]
   }).then(function (dbOrders) {
     console.log(dbOrders)
@@ -75,13 +67,8 @@ module.exports = function(app) {
 
 
 
-  // app.get("/inventory", function(req, res){
-  //   db.inventory.findAll({}).then(function (res) {
-  //     res.render("inventory", {data: res})
-  //   });
-  // });
 
-  app.get("/pos", function(req, res) {
+  app.get("/pos", isAuthenticated, function(req, res) {
     res.render("pos", {user: req.user});
   });
 
@@ -92,9 +79,4 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
     res.render("login", {user: req.user});
   });
-  
-  // Render 404 page for any unmatched routes
-  // app.get("*", function(req, res) {
-  //   // res.render("404");
-  // });
-};
+  };

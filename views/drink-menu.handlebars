@@ -3,26 +3,12 @@
       <h1 class="display-4">Drink Menu</h1>
       </div>
   <container class="text-center">
-{{!-- <table id="table" class="table-bordered table-condensed mx-auto p-3 m-5 table-large">
-    <tbody>
-      <thead>
-        <tr>
-          <th scope="col">Drink Name</th>
-          <th scope="col">Price Per</th>
-          <th scope="col">Number Sold</th>
-        </tr>
-      </thead>
-        {{#each data}}
-    </tbody>
-</table>
-<div> --}}
         {{#each data}}
                 {{this.drink_name}}
                 {{this.price}}
                 {{this.num_sold}}
         {{/each}}
 
-{{!-- </div> --}}
 <div>
 <container>
 <button id="export" class="center-block btn-lg btn btn-warning">
