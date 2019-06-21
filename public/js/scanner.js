@@ -40,7 +40,6 @@ $("#liquorSubmit").on("click", (event) => {
   } else {
     if (isANewLiquor) {
       $.post("/api/inventory", newLiquor).then(() => {
-        console.log("updated");
       });
     } else {
       $.ajax({
@@ -48,7 +47,6 @@ $("#liquorSubmit").on("click", (event) => {
         url: "/api/inventory",
         data: newLiquor
       }).then(() => {
-        console.log("updated");
       });
     }
     $("#bottleName").val("").removeClass("disabled");

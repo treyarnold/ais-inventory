@@ -39,8 +39,6 @@ $(document).on('click', '.liquorChoice', function (event) {
       <span>${$(event.target).parent().parent().attr("id")} - ${event.target.text}</span>
       <span class="ml-auto" price="${price}"><strong>${price}</strong>
     </div>`;
-  console.log(order);
-  console.log($("#currentOrder"));
   $("#totalLine").before(order);
 });
 
@@ -53,7 +51,6 @@ $(document).on("click", "#submit", () => {
   const total = parseFloat($("#total").text());
   if (total > 0) {
     $.post("/api/order", {total_price: total}).then(() => {
-      console.log("ordered");
       $("#currentOrder").empty();
       resetOrderField();
     });

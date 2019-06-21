@@ -60,7 +60,6 @@ module.exports = function(app) {
         [Op.eq]: req.params.id}},
     }]
   }).then(function (dbOrders) {
-    console.log(dbOrders)
       res.render("order-single", {data: dbOrders})
     })
   });

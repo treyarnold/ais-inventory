@@ -8,7 +8,6 @@ module.exports = function (app) {
   // Get drinks
 
   app.post("/api/user", function (req, res) {
-    console.log(req.body);
     db.user.create(req.body).then(function (dbUser) {
       res.redirect("/pos");
     });
