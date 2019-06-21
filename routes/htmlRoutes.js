@@ -63,13 +63,12 @@ module.exports = function(app) {
     console.log(dbOrders)
       res.render("order-single", {data: dbOrders})
     })
-  })
-
-
-
+  });
 
   app.get("/pos", isAuthenticated, function(req, res) {
-    res.render("pos", {user: req.user});
+    db.drink.findAll({}).then((result) => {
+      res.render("pos", {user: req.user, drinks: result});
+    })
   });
 
   app.get("/register", function(req, res) {

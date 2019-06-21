@@ -1,10 +1,28 @@
 const db = require("../models");
 const Sequelize = require("sequelize");
-const Op = Sequelize.Op
+const Op = Sequelize.Op;
+const passport = require("../config/passport");
 
 module.exports = function (app) {
 
   // Get drinks
+
+  app.post("/api/user", function (req, res) {
+    console.log(req.body);
+    db.user.create(req.body).then(function (dbUser) {
+      res.redirect("/pos");
+    });
+  });
+
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    res.redirect("/pos");
+  });
+
+  app.post("/api/order", function(req, res) {
+    db.order.create(req.body).then((result) => {
+      res.json(result);
+    })
+  })
 
   app.get("/api/drinks", function (req, res) {
     db.drink.findAll({
