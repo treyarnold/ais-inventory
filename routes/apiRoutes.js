@@ -18,6 +18,12 @@ module.exports = function (app) {
     res.redirect("/pos");
   });
 
+  app.post("/api/order", function(req, res) {
+    db.order.create(req.body).then((result) => {
+      res.json(result);
+    })
+  })
+
   app.get("/api/drinks", function (req, res) {
     db.drink.findAll({
       include: [

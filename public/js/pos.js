@@ -4,7 +4,7 @@ const orderStarter = `
       <button class="btn btn-danger" id="clear">Clear</button>
     </div>
     <div class="col">
-      <button class="btn btn-success" id="clear">Submit</button>
+      <button class="btn btn-success" id="submit">Submit</button>
     </div>
   </div>
   <div class="row px-3 mt-5" id="totalLine">
@@ -47,4 +47,15 @@ $(document).on('click', '.liquorChoice', function (event) {
 $(document).on("click", "#clear", () => {
   $("#currentOrder").empty();
   resetOrderField();
+});
+
+$(document).on("click", "#submit", () => {
+  const total = parseFloat($("#total").text());
+  if (total > 0) {
+    $.post("/api/order", {total_price: total}).then(() => {
+      console.log("ordered");
+      $("#currentOrder").empty();
+      resetOrderField();
+    });
+  }
 });
