@@ -5,10 +5,10 @@
 ## Developers
 
 - [Trey Arnold](https://github.com/treyarnold)
-  - Full-Stack - Focussed on front end, scanner, html routes, and authentication
+  - Full-Stack - Focused on POS, scanner, html routes, and authentication
   
 - [Chris Strope](https://github.com/Stroupe79)
-  - Full-Stack - focused on Database, api routes, and showing database information
+  - Full-Stack - focused on database, api routes, and showing database information
 
 ## Techstack
 
