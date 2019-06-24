@@ -48,6 +48,7 @@ module.exports = function(app) {
 
   app.get("/orders", isAuthenticated, function(req, res){
     db.order.findAll({}).then(function(dbOrders){
+      console.log(dbOrders)
       res.render("order", {data: dbOrders})
     })
   })

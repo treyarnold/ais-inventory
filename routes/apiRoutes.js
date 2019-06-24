@@ -90,6 +90,7 @@ module.exports = function (app) {
     db.order.findAll({
       include: [
         { model: db.drink },
+        { model: db.users}
       ]
     }).then(function (dborder) {
       res.json(dborder);

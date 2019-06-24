@@ -10,12 +10,14 @@
           <th scope="col">Order #</th>
           <th scope="col">Total</th>
           <th scope="col">Order Time</th>
+          <th scope="col">Details</th>
         </tr>
       </thead>
         {{#each data}}
                 <td>{{this.id}}</td>
                 <td>{{this.total_price}}</td>
                 <td>{{this.createdAt}}</td>
+                <td><button onclick="window.location.href = './orders/{{this.id}}';" type="submit" class="center-block btn-lg btn btn-warning submit">Details</button></td>
             </tr>
         {{/each}}
     </tbody>
