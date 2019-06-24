@@ -5,13 +5,10 @@
 ## Developers
 
 - [Trey Arnold](https://github.com/treyarnold)
-  - Utility
-
+  - Full-Stack - Focussed on front end, scanner, html routes, and authentication
+  
 - [Chris Strope](https://github.com/Stroupe79)
-  - Backend
-
-- [Ibrahim Iqbal](https://github.com/iaiqbal)
-  - Front End
+  - Full-Stack - focused on Database, api routes, and showing database information
 
 ## Techstack
 
@@ -20,11 +17,7 @@
 - Mysql
 - Bootstrap
 - JawsDB
-- Whatever I find for UPC
-
-## Project board
-
-- Link to your project board on Github - there should be an overview of the features and some user stories assigned to various team members
+- Dynamsoft
 
 ## Database Diagram
 
